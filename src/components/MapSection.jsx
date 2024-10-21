@@ -2,7 +2,7 @@ import mapa from '../assets/UnacDron.png'
 
 function MapSection() {
   return (
-    <div className="w-[317px] bg-gray-200 relative">
+    <div className="w-[317px] bg-gray-200 relative hidden lg:block">
       <h2 className="text-lg font-semibold absolute top-4 left-4">Alas en alerta</h2>
       {/* Simulación de un mapa */}
       <img

@@ -4,6 +4,7 @@ import avatar1 from '../../assets/avatar1.png';
 import avatar2 from '../../assets/avatar2.png';
 import pajaro1 from '../../assets/pajaro1.png';
 import pajaro2 from '../../assets/pajaro2.png';
+import BottomMenu from "../../components/BottomMenu";
 
 function TemplateHome() {
     return (
@@ -11,11 +12,11 @@ function TemplateHome() {
         {/* Menú lateral */}
         <SideMenu/>
         {/* Contenido Principal */}
-        <div className="w-full bg-gray-50 p-6 overflow-y-auto">  
+        <div className="w-full bg-gray-50 lg:p-6 overflow-y-auto">  
           {/* Publicaciones */}
-          <div className="space-y-6 ml-[200px]">
+          <div className="space-y-6 md:ml-[80px] lg:ml-[200px]">
             {/* Publicación 1 */}
-            <div className="bg-[#e1e5e7] rounded-lg p-4 w-[400px] min-h-[500px] flex flex-col justify-between">
+            <div className="bg-[#e1e5e7] rounded-lg p-4 md:w-[600px] lg:w-[400px] min-h-[500px] flex flex-col justify-between">
               <div className="flex items-center space-x-4">
                 <img src={avatar1} alt="avatar" className="w-10 h-10 rounded-full" />
                 <div>
@@ -30,7 +31,7 @@ function TemplateHome() {
             </div>
   
             {/* Publicación 2 */}
-            <div className="bg-[#e1e5e7] rounded-lg p-4 w-[400px] min-h-[500px] flex flex-col justify-between">
+            <div className="bg-[#e1e5e7] rounded-lg p-4 md:w-[600px] lg:w-[400px] min-h-[500px] flex flex-col justify-between">
               <div className="flex items-center space-x-4">
                 <img src={avatar2} alt="avatar" className="w-10 h-10 rounded-full" />
                 <div>
@@ -48,6 +49,7 @@ function TemplateHome() {
   
         {/* Sección del mapa */}
         <MapSection/>
+        <BottomMenu/>
       </div>
     );
   }
