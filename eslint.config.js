@@ -7,10 +7,13 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 export default [
   { ignores: ['dist'] },
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}'], // Asegúrate de cubrir también los archivos TS/TSX si los usas
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser, // Mantén las globals de browser
+        jest: true, // Agrega Jest a las globales
+      },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -22,6 +25,9 @@ export default [
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      // Agrega el plugin de Jest si lo deseas
+      // eslint-disable-next-line no-undef
+      jest: require('eslint-plugin-jest'),
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -33,6 +39,8 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      // Puedes agregar reglas específicas de Jest si lo necesitas
+      'jest/no-disabled-tests': 'warn', // Ejemplo de regla de Jest
     },
   },
 ]
