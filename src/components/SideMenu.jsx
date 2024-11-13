@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";  // Importar useNavigate
+import PropTypes from "prop-types";
 import IconHome from "../assets/iconoCasa.svg";
 import IconSearch from "../assets/search.png";
 import IconRegister from "../assets/registro.png";
@@ -8,7 +9,7 @@ import IconProfile from "../assets/profile.png";
 import IconInformation from "../assets/information.svg";
 import Logo from "../assets/logoHome.png";
 
-function SideMenu() {
+function SideMenu({setShowCreation}) {
   const navigate = useNavigate(); // Inicializar el hook useNavigate
   
   // Estado para controlar si se muestra el cuadro de búsqueda
@@ -26,6 +27,10 @@ function SideMenu() {
       setSearchResults([searchTerm, ...searchResults]);
       setSearchTerm(""); // Limpiar el input
     }
+  };
+
+  const handleCreatePost = () => {
+    setShowCreation(true);
   };
 
   return (
@@ -76,7 +81,8 @@ function SideMenu() {
           )}
 
           {/* Botón Crear registro */}
-          <button className="flex items-center space-y-2 text-sm">
+          <button className="flex items-center space-y-2 text-sm"
+          onClick={handleCreatePost}>
             <img src={IconRegister} alt="registro" className="w-10 h-10" />
             <span>Crear registro</span>
           </button>
@@ -91,7 +97,7 @@ function SideMenu() {
 
           {/* Botón Notificaciones */}
           <button
-            className={`flex items-center space-y-1 text-sm ${notificationActive ? "bg-[#71CAD26B] rounded w-[120px] h-[40px]" : ""}`}
+            className={`flex items-center space-y-1 text-sm ${notificationActive ? "bg-[#71CAD26B] rounded w-[130px] h-[40px]" : ""}`}
             onClick={() => setNotificationActive(!notificationActive)}
           >
             <img src={IconNotification} alt="notificación" className="w-10 h-10" />
@@ -124,5 +130,9 @@ function SideMenu() {
     </div>
   );
 }
+SideMenu.propTypes = {
+  setShowCreation: PropTypes.func.isRequired,
+  addPost: PropTypes.func.isRequired,
+};
 
 export default SideMenu;
